@@ -32,11 +32,9 @@ git clone https://github.com/Thiennam209/ARM-Template-WTA.git
 autoid=$(az dt model create -n $adtname --models ./ARM-Template-WTA/models/auto.json --query [].id -o tsv)
 
 # echo 'instantiate ADT Instances'
-
-echo "Create Auto autoid"
+echo "Create auto autoid"
 az dt twin create -n $adtname --dtmi $autoid --twin-id "autoid"
 az dt twin update -n $adtname --twin-id "autoid" --json-patch '[{"op":"add", "path":"/autoid", "value": "'"autoid"'"}]'
-
 
 
 # az eventgrid topic create -g $rgname --name $egname -l $location
