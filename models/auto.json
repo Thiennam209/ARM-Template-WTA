@@ -23,33 +23,38 @@
         },
         {
             "@type": "Telemetry",
-            "name": "Description",
-            "schema": "string"
-        },
-        {
-            "@type": "Telemetry",
-            "name": "Code",
+            "name": "MaxReverseSpeed",
             "schema": "integer"
         },
         {
             "@type": "Telemetry",
-            "name": "WindSpeed",
-            "schema": "double"
+            "name": "AccelerationMultiplier",
+            "schema": "integer"
         },
         {
             "@type": "Telemetry",
-            "name": "Ambient",
-            "schema": "double"
+            "name": "DecelerationMultiplier",
+            "schema": "integer"
         },
         {
             "@type": "Telemetry",
-            "name": "Rotor",
-            "schema": "double"
+            "name": "BrakeForce",
+            "schema": "integer"
         },
         {
             "@type": "Telemetry",
-            "name": "Power",
-            "schema": "double"
+            "name": "MaxSteeringAngle",
+            "schema": "integer"
+        },
+        {
+            "@type": "Telemetry",
+            "name": "SteeringSpeed",
+            "schema": "integer"
+        },
+        {
+            "@type": "Telemetry",
+            "name": "isCrash",
+            "schema": "boolean"
         }
     ]
 }

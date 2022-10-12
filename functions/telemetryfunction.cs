@@ -43,32 +43,35 @@ namespace My.Function
                     string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
                     var ID = deviceMessage["body"]["autoid"];
                     var TimeInterval = deviceMessage["body"]["TimeInterval"];
-                    var Description = deviceMessage["body"]["Description"];
-                    var Code = deviceMessage["body"]["Code"];
-                    var WindSpeed = deviceMessage["body"]["WindSpeed"];
-                    var Ambient = deviceMessage["body"]["Ambient"];
-                    var Rotor = deviceMessage["body"]["Rotor"];
-                    var Power = deviceMessage["body"]["Power"];
+                    var MaxReverseSpeed = deviceMessage["body"]["MaxReverseSpeed"];
+                    var AccelerationMultiplier = deviceMessage["body"]["AccelerationMultiplier"];
+                    var DecelerationMultiplier = deviceMessage["body"]["DecelerationMultiplier"];
+                    var BrakeForce = deviceMessage["body"]["BrakeForce"];
+                    var MaxSteeringAngle = deviceMessage["body"]["MaxSteeringAngle"];
+                    var SteeringSpeed = deviceMessage["body"]["SteeringSpeed"];
+                    var isCrash = deviceMessage["body"]["isCrash"];
 
                     log.LogInformation($"Device:{deviceId} Device Id is:{ID}");
                     log.LogInformation($"Device:{deviceId} Time interval is:{TimeInterval}");
-                    log.LogInformation($"Device:{deviceId} Description is:{Description}");
-                    log.LogInformation($"Device:{deviceId} CodeNumber is:{Code}");
-                    log.LogInformation($"Device:{deviceId} WindSpeed is:{WindSpeed}");
-                    log.LogInformation($"Device:{deviceId} Ambient Temperature is:{Ambient}");
-                    log.LogInformation($"Device:{deviceId} Rotor RPM is:{Rotor}");
-                    log.LogInformation($"Device:{deviceId} Power is:{Power}");
+                    log.LogInformation($"Device:{deviceId} MaxReverseSpeed is:{MaxReverseSpeed}");
+                    log.LogInformation($"Device:{deviceId} AccelerationMultiplier is:{AccelerationMultiplier}");
+                    log.LogInformation($"Device:{deviceId} DecelerationMultiplier is:{DecelerationMultiplier}");
+                    log.LogInformation($"Device:{deviceId} BrakeForce is:{BrakeForce}");
+                    log.LogInformation($"Device:{deviceId} MaxSteeringAngle:{MaxSteeringAngle}");
+                    log.LogInformation($"Device:{deviceId} SteeringSpeed is:{SteeringSpeed}");
+                    log.LogInformation($"Device:{deviceId} isCrash is:{isCrash}");
                     var updateProperty = new JsonPatchDocument();
                     var turbineTelemetry = new Dictionary<string, Object>()
                     {
                         ["autoid"] = ID,
                         ["TimeInterval"] = TimeInterval,
-                        ["Description"] = Description,
-                        ["Code"] = Code,
-                        ["WindSpeed"] = WindSpeed,
-                        ["Ambient"] = Ambient,
-                        ["Rotor"] = Rotor,
-                        ["Power"] = Power
+                        ["MaxReverseSpeed"] = MaxReverseSpeed,
+                        ["AccelerationMultiplier"] = AccelerationMultiplier,
+                        ["DecelerationMultiplier"] = DecelerationMultiplier,
+                        ["BrakeForce"] = BrakeForce,
+                        ["MaxSteeringAngle"] = MaxSteeringAngle,
+                        ["SteeringSpeed"] = SteeringSpeed,
+                        ["isCrash"] = isCrash
                     };
                     updateProperty.AppendAdd("/autoid", ID.Value<string>());
 

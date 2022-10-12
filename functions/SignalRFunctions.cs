@@ -17,12 +17,13 @@ namespace SignalRFunctions
     {
         public static string autoid;
         public static string timeInterval;
-        public static string description;
-        public static int code;
-        public static double windSpeed;
-        public static double temperature;
-        public static double rotorRPM;
-        public static double power = 0.0D;
+        public static int MaxReverseSpeed;
+        public static int AccelerationMultiplier;
+        public static int DecelerationMultiplier;
+        public static int BrakeForce;
+        public static int MaxSteeringAngle;
+        public static int SteeringSpeed;
+        public static bool isCrash = false;
 
         [FunctionName("negotiate")]
         public static SignalRConnectionInfo GetSignalRInfo(
