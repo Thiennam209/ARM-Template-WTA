@@ -40,14 +40,14 @@ namespace My.Function
                 {
                     JObject alertMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
                     string deviceId = (string)alertMessage["systemProperties"]["iothub-connection-device-id"];
-                    var ID = alertMessage["body"]["TurbineID"];
+                    var ID = alertMessage["body"]["autoid"];
                     var alert = alertMessage["body"]["Alert"];
                     log.LogInformation($"Device:{deviceId} Device Id is:{ID}");
                     log.LogInformation($"Device:{deviceId} Alert Status is:{alert}");
 
                     var updateProperty = new JsonPatchDocument();
                     updateProperty.AppendReplace("/Alert", alert.Value<bool>());
-                    updateProperty.AppendReplace("/TurbineID", ID.Value<string>());
+                    updateProperty.AppendReplace("/autoid", ID.Value<string>());
                     log.LogInformation(updateProperty.ToString());
                     try
                     {
@@ -63,7 +63,7 @@ namespace My.Function
 
                     JObject deviceMessage = (JObject)JsonConvert.DeserializeObject(eventGridEvent.Data.ToString());
                     string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
-                    var ID = deviceMessage["body"]["TurbineID"];
+                    var ID = deviceMessage["body"]["autoid"];
                     var TimeInterval = deviceMessage["body"]["TimeInterval"];
                     var Description = deviceMessage["body"]["Description"];
                     var Code = deviceMessage["body"]["Code"];
@@ -83,7 +83,7 @@ namespace My.Function
                     var updateProperty = new JsonPatchDocument();
                     var turbineTelemetry = new Dictionary<string, Object>()
                     {
-                        ["TurbineID"] = ID,
+                        ["autoid"] = ID,
                         ["TimeInterval"] = TimeInterval,
                         ["Description"] = Description,
                         ["Code"] = Code,
@@ -92,7 +92,7 @@ namespace My.Function
                         ["Rotor"] = Rotor,
                         ["Power"] = Power
                     };
-                    updateProperty.AppendAdd("/TurbineID", ID.Value<string>());
+                    updateProperty.AppendAdd("/autoid", ID.Value<string>());
 
                     log.LogInformation(updateProperty.ToString());
                     try
