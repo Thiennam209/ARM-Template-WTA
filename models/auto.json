@@ -16,14 +16,6 @@
             "schema": "string"
         },
         {
-            "@type": "Property",
-            "name": "Alert",
-            "displayName": "Alert",
-            "description": "whether or not this auto needs maintenance",
-            "writable": true,
-            "schema": "boolean"
-        },
-        {
             "@type": "Telemetry",
             "name": "TimeInterval",
             "description":  "The time interval of this data",

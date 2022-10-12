@@ -23,7 +23,6 @@ namespace SignalRFunctions
         public static double temperature;
         public static double rotorRPM;
         public static double power = 0.0D;
-        public static bool alert;
 
         [FunctionName("negotiate")]
         public static SignalRConnectionInfo GetSignalRInfo(
@@ -65,19 +64,10 @@ namespace SignalRFunctions
                     
                     var data = eventGridData.SelectToken("data");
                     var patch = data.SelectToken("patch");
-                    foreach(JToken token in patch)
-                    {
-                        if(token["path"].ToString() == "/Alert")
-                        {
-                            alert = token["value"].ToObject<bool>();
-                        }
-                    }
 
-                    log.LogInformation($"setting alert to: {alert}");
                     var property = new Dictionary<object, object>
                     {
-                        {"autoid", autoid },
-                        {"Alert", alert }
+                        {"autoid", autoid }
                     };
                     return signalRMessages.AddAsync(
                         new SignalRMessage

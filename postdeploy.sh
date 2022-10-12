@@ -36,7 +36,7 @@ for i in {98..107}
 do
     echo "Create Auto T$i"
     az dt twin create -n $adtname --dtmi $autoid --twin-id "T$i"
-    az dt twin update -n $adtname --twin-id "T$i" --json-patch '[{"op":"add", "path":"/autoid", "value": "'"T$i"'"},{"op":"add", "path":"/Alert", "value": false}]'
+    az dt twin update -n $adtname --twin-id "T$i" --json-patch '[{"op":"add", "path":"/autoid", "value": "'"T$i"'"}]'
 done
 
 
