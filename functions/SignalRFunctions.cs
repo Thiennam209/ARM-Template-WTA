@@ -17,12 +17,13 @@ namespace SignalRFunctions
     {
         public static string autoid;
         public static string timeInterval;
-        public static int MaxReverseSpeed;
-        public static int AccelerationMultiplier;
-        public static int DecelerationMultiplier;
-        public static int BrakeForce;
-        public static int MaxSteeringAngle;
-        public static int SteeringSpeed;
+        public static int Car1_Acceleration;
+        public static int Car1_Velocity;
+        public static int Car1_BrakeForce;
+        public static int Car2_Acceleration;
+        public static int Car2_Velocity;
+        public static int Car2_BrakeForce;
+        public static int DistanceBetweenCars;
         public static bool isCrash = false;
 
         [FunctionName("negotiate")]

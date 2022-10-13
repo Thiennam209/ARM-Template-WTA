@@ -43,34 +43,37 @@ namespace My.Function
                     string deviceId = (string)deviceMessage["systemProperties"]["iothub-connection-device-id"];
                     var ID = deviceMessage["body"]["autoid"];
                     var TimeInterval = deviceMessage["body"]["TimeInterval"];
-                    var MaxReverseSpeed = deviceMessage["body"]["MaxReverseSpeed"];
-                    var AccelerationMultiplier = deviceMessage["body"]["AccelerationMultiplier"];
-                    var DecelerationMultiplier = deviceMessage["body"]["DecelerationMultiplier"];
-                    var BrakeForce = deviceMessage["body"]["BrakeForce"];
-                    var MaxSteeringAngle = deviceMessage["body"]["MaxSteeringAngle"];
-                    var SteeringSpeed = deviceMessage["body"]["SteeringSpeed"];
+                    var Car1_Acceleration = deviceMessage["body"]["Car1_Acceleration"];
+                    var Car1_Velocity = deviceMessage["body"]["Car1_Velocity"];
+                    var Car1_BrakeForce = deviceMessage["body"]["Car1_BrakeForce"];
+                    var Car2_Acceleration = deviceMessage["body"]["Car2_Acceleration"];
+                    var Car2_Velocity = deviceMessage["body"]["Car2_Velocity"];
+                    var Car2_BrakeForce = deviceMessage["body"]["Car2_BrakeForce"];
+                    var DistanceBetweenCars = deviceMessage["body"]["DistanceBetweenCars"];
                     var isCrash = deviceMessage["body"]["isCrash"];
 
                     log.LogInformation($"Device:{deviceId} Device Id is:{ID}");
                     log.LogInformation($"Device:{deviceId} Time interval is:{TimeInterval}");
-                    log.LogInformation($"Device:{deviceId} MaxReverseSpeed is:{MaxReverseSpeed}");
-                    log.LogInformation($"Device:{deviceId} AccelerationMultiplier is:{AccelerationMultiplier}");
-                    log.LogInformation($"Device:{deviceId} DecelerationMultiplier is:{DecelerationMultiplier}");
-                    log.LogInformation($"Device:{deviceId} BrakeForce is:{BrakeForce}");
-                    log.LogInformation($"Device:{deviceId} MaxSteeringAngle:{MaxSteeringAngle}");
-                    log.LogInformation($"Device:{deviceId} SteeringSpeed is:{SteeringSpeed}");
+                    log.LogInformation($"Device:{deviceId} Car1_Acceleration is:{Car1_Acceleration}");
+                    log.LogInformation($"Device:{deviceId} Car1_Velocity is:{Car1_Velocity}");
+                    log.LogInformation($"Device:{deviceId} Car1_BrakeForce is:{Car1_BrakeForce}");
+                    log.LogInformation($"Device:{deviceId} Car2_Acceleration is:{Car2_Acceleration}");
+                    log.LogInformation($"Device:{deviceId} Car2_Velocity:{Car2_Velocity}");
+                    log.LogInformation($"Device:{deviceId} Car2_BrakeForce is:{Car2_BrakeForce}");
+                    log.LogInformation($"Device:{deviceId} DistanceBetweenCars is:{DistanceBetweenCars}");
                     log.LogInformation($"Device:{deviceId} isCrash is:{isCrash}");
                     var updateProperty = new JsonPatchDocument();
                     var turbineTelemetry = new Dictionary<string, Object>()
                     {
                         ["autoid"] = ID,
                         ["TimeInterval"] = TimeInterval,
-                        ["MaxReverseSpeed"] = MaxReverseSpeed,
-                        ["AccelerationMultiplier"] = AccelerationMultiplier,
-                        ["DecelerationMultiplier"] = DecelerationMultiplier,
-                        ["BrakeForce"] = BrakeForce,
-                        ["MaxSteeringAngle"] = MaxSteeringAngle,
-                        ["SteeringSpeed"] = SteeringSpeed,
+                        ["Car1_Acceleration"] = Car1_Acceleration,
+                        ["Car1_Velocity"] = Car1_Velocity,
+                        ["Car1_BrakeForce"] = Car1_BrakeForce,
+                        ["Car2_Acceleration"] = Car2_Acceleration,
+                        ["Car2_Velocity"] = Car2_Velocity,
+                        ["Car2_BrakeForce"] = Car2_BrakeForce,
+                        ["DistanceBetweenCars"] = DistanceBetweenCars,
                         ["isCrash"] = isCrash
                     };
                     updateProperty.AppendAdd("/autoid", ID.Value<string>());
