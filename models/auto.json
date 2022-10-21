@@ -1,9 +1,9 @@
 {
-  "@id": "dtmi:digitaltwins:Basic:Turbine;1",
+  "@id": "dtmi:digitaltwins:Basic:Auto;1",
   "@type": "Interface",
   "@context": ["dtmi:dtdl:context;2"],
-  "displayName": "Wind Turbine -v1",
-  "description": "Wind Turbine data",
+  "displayName": "Auto Car",
+  "description": "Auto Car data",
   "contents": [
     {
       "@type": "Property",
